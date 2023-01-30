@@ -37,51 +37,70 @@ require(["./src.js"], function (src) {
   });
 
   QUnit.module("Calcula a diferença de dias- teste principal");
-  QUnit.test("Teste de diferença de dias", function (assert) {
+  QUnit.test("Diferença de dias de anos diferentes", function (assert) {
     assert.equal(
       src.calculaDiasEntreDuasDatas("2021-06-15", "2023-05-25"),
       709
     );
   });
-  QUnit.test("Teste de diferença de dias", function (assert) {
+  QUnit.test("Diferença de dias de anos diferentes", function (assert) {
     assert.equal(
       src.calculaDiasEntreDuasDatas("2022-06-15", "2023-05-25"),
       344
     );
   });
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(src.calculaDiasEntreDuasDatas("2022-05-15", "2022-06-25"), 41);
-  });
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(src.calculaDiasEntreDuasDatas("2022-10-11", "2023-01-10"), 91);
-  });
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(
-      src.calculaDiasEntreDuasDatas("2022-01-10", "2022-10-11"),
-      274
-    );
-  });
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(src.calculaDiasEntreDuasDatas("2022-01-10", "2022-01-20"), 10);
-  });
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(src.calculaDiasEntreDuasDatas("2022-01-10", "2022-02-20"), 41);
-  });
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(
-      src.calculaDiasEntreDuasDatas("2020-02-10", "2022-03-20"),
-      769
-    );
-  });
-  QUnit.test("Teste de diferença de dias", function (assert) {
+  QUnit.test("Diferença de dias de anos diferentes", function (assert) {
     assert.equal(
       src.calculaDiasEntreDuasDatas("2019-02-10", "2022-03-20"),
       1134
     );
   });
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(src.calculaDiasEntreDuasDatas("2020-02-10", "2020-03-20"), 39);
+  QUnit.test("Diferença de dias de anos diferentes", function (assert) {
+    assert.equal(src.calculaDiasEntreDuasDatas("2022-10-11", "2023-01-10"), 91);
   });
+  QUnit.test("Diferença de dias dentro do mesmo ano", function (assert) {
+    assert.equal(src.calculaDiasEntreDuasDatas("2022-05-15", "2022-06-25"), 41);
+  });
+
+  QUnit.test(
+    "Diferença de dias dentro do mesmo ano, com período de meses",
+    function (assert) {
+      assert.equal(
+        src.calculaDiasEntreDuasDatas("2022-01-10", "2022-10-11"),
+        274
+      );
+    }
+  );
+  QUnit.test(
+    "Diferença de dias dentro do mesmo ano e mês, com período de dias",
+    function (assert) {
+      assert.equal(
+        src.calculaDiasEntreDuasDatas("2022-01-10", "2022-01-20"),
+        10
+      );
+    }
+  );
+  QUnit.test("Diferença de dias de meses subsequentes", function (assert) {
+    assert.equal(src.calculaDiasEntreDuasDatas("2022-01-10", "2022-02-20"), 41);
+  });
+  QUnit.test(
+    "Teste de diferença de dias de meses subsequentes, passando ano bissexto",
+    function (assert) {
+      assert.equal(
+        src.calculaDiasEntreDuasDatas("2020-02-10", "2020-03-20"),
+        39
+      );
+    }
+  );
+  QUnit.test(
+    "Diferença de dias de meses subsequentes, passando ano bissexto",
+    function (assert) {
+      assert.equal(
+        src.calculaDiasEntreDuasDatas("2020-02-10", "2022-03-20"),
+        769
+      );
+    }
+  );
 
   QUnit.test("Datas no mesmo mês - teste Charles", function (assert) {
     assert.equal(src.calculaDiasEntreDuasDatas("2023-01-26", "2023-01-27"), 1);
