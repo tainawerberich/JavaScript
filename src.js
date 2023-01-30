@@ -16,7 +16,7 @@ define([], function () {
         if (objDataI.mes == objDataF.mes) {
           dias += objDataF.dia - objDataI.dia;
         } else {
-          // buscando os dias do primeiro mes do periodo
+          // buscando os dias do primeiro mês do periodo
           dias += this.getDiaMes(objDataI.ano, objDataI.mes) - objDataI.dia;
           // adiciona dias caso houver intervalo de meses completos entre a data inicial e final do período
           for (let mes = objDataI.mes + 1; mes <= objDataF.mes - 1; mes++) {
@@ -41,7 +41,7 @@ define([], function () {
           dias += this.anoBissexto(ano) == true ? 366 : 365;
         }
 
-        // Percorre mes 01 até penultimo mes da data fim
+        // Percorre mês 01 até penultimo mês da data fim
         for (let mes = 1; mes <= objDataF.mes - 1; mes++) {
           dias += this.getDiaMes(objDataF.ano, mes);
         }
