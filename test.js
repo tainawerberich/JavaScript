@@ -16,6 +16,26 @@ require(["./src.js"], function (src) {
     assert.equal(src.anoBissexto("2020"), true);
   });
 
+  QUnit.module("Verifica dias do mês");
+  QUnit.test("Retorna dias do mês se o ano é bissexto", function (assert) {
+    assert.equal(src.getDiaMes(2000, 02), 29);
+  });
+  QUnit.test("Retorna dias do mês se o ano é bissexto", function (assert) {
+    assert.equal(src.getDiaMes(2000, 05), 31);
+  });
+  QUnit.test("Retorna dias do mês se o ano é bissexto", function (assert) {
+    assert.equal(src.getDiaMes(2004, 02), 29);
+  });
+  QUnit.test("Retorna dias do mês", function (assert) {
+    assert.equal(src.getDiaMes(2020, 05), 31);
+  });
+  QUnit.test("Retorna dias do mês", function (assert) {
+    assert.equal(src.getDiaMes(2002, 02), 28);
+  });
+  QUnit.test("Retorna dias do mês", function (assert) {
+    assert.equal(src.getDiaMes(2010, 12), 31);
+  });
+
   QUnit.module("Calcula a diferença de dias- teste principal");
   QUnit.test("Teste de diferença de dias", function (assert) {
     assert.equal(
