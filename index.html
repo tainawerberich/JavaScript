@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dojo Calculadora de Dias - unit tests</title>
+
+    <!-- This css is required for the QUnit Report -->
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/qunit/qunit-1.14.0.css"
+    />
+  </head>
+
+  <body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <script src="https://code.jquery.com/qunit/qunit-1.14.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/dojo/1.12.2/dojo/dojo.js"></script>
+
+    <script type="text/javascript">
+      QUnit.config.autostart = false;
+
+      require(["./test.js"], function (test) {
+        QUnit.start();
+      });
+    </script>
+  </body>
+</html>
