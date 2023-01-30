@@ -74,61 +74,85 @@ require(["./src.js"], function (src) {
     );
   });
   QUnit.test("Teste de diferença de dias", function (assert) {
+    assert.equal(
+      src.calculaDiasEntreDuasDatas("2019-02-10", "2022-03-20"),
+      1134
+    );
+  });
+  QUnit.test("Teste de diferença de dias", function (assert) {
     assert.equal(src.calculaDiasEntreDuasDatas("2020-02-10", "2020-03-20"), 39);
   });
 
-  QUnit.test("Teste de diferença de dias", function (assert) {
+  QUnit.test("Datas no mesmo mês - teste Charles", function (assert) {
     assert.equal(src.calculaDiasEntreDuasDatas("2023-01-26", "2023-01-27"), 1);
   });
 
-  QUnit.test("Teste de diferença de dias", function (assert) {
+  QUnit.test("Meses subsequentes - teste Charles", function (assert) {
     assert.equal(src.calculaDiasEntreDuasDatas("2023-01-26", "2023-02-20"), 25);
   });
 
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(src.calculaDiasEntreDuasDatas("2023-02-26", "2023-03-20"), 22);
-  });
+  QUnit.test(
+    "Fevereiro de ano não bissexto - teste Charles",
+    function (assert) {
+      assert.equal(
+        src.calculaDiasEntreDuasDatas("2023-02-26", "2023-03-20"),
+        22
+      );
+    }
+  );
 
-  QUnit.test("Teste de diferença de dias", function (assert) {
+  QUnit.test("Fevereiro de ano bissexto - teste Charles", function (assert) {
     assert.equal(src.calculaDiasEntreDuasDatas("2024-02-26", "2024-03-20"), 23);
   });
 
-  QUnit.test("Teste de diferença de dias", function (assert) {
+  QUnit.test("Intervalo de meses - teste Charles", function (assert) {
     assert.equal(
       src.calculaDiasEntreDuasDatas("2023-03-01", "2023-09-20"),
       203
     );
   });
 
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(
-      src.calculaDiasEntreDuasDatas("2024-01-01", "2024-12-31"),
-      365
-    );
-  });
+  QUnit.test(
+    "Intervalos de meses em ano bissexto - teste Charles",
+    function (assert) {
+      assert.equal(
+        src.calculaDiasEntreDuasDatas("2024-01-01", "2024-12-31"),
+        365
+      );
+    }
+  );
 
-  QUnit.test("Teste de diferença de dias", function (assert) {
+  QUnit.test("Ano subsequente- teste Charles", function (assert) {
     assert.equal(src.calculaDiasEntreDuasDatas("2023-12-15", "2024-01-15"), 31);
   });
 
-  QUnit.test("Teste de diferença de dias", function (assert) {
+  QUnit.test("Datas em anos diferentes - teste Charles", function (assert) {
     assert.equal(
       src.calculaDiasEntreDuasDatas("2020-08-30", "2024-01-15"),
       1233
     );
   });
 
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(
-      src.calculaDiasEntreDuasDatas("2019-08-10", "2024-09-01"),
-      1849
-    );
-  });
+  QUnit.test(
+    "Anos diferentes, passando ano bissexto - teste Charles",
+    function (assert) {
+      assert.equal(
+        src.calculaDiasEntreDuasDatas("2019-08-10", "2024-09-01"),
+        1849
+      );
+    }
+  );
 
-  QUnit.test("Teste de diferença de dias", function (assert) {
-    assert.equal(
-      src.calculaDiasEntreDuasDatas("2023-01-27", "1970-01-01"),
-      19384
-    );
+  QUnit.test(
+    "Quando a data final é menor que a inicial - teste Charles",
+    function (assert) {
+      assert.equal(
+        src.calculaDiasEntreDuasDatas("2023-01-27", "1970-01-01"),
+        19384
+      );
+    }
+  );
+  QUnit.test("Duas datas iguais resultam 0 - teste Charles", function (assert) {
+    assert.equal(src.calculaDiasEntreDuasDatas("2023-01-26", "2023-01-26"), 0);
   });
 });
